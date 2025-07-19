@@ -1,0 +1,42 @@
+✅ PSEUDO-CLASSES (:)
+
+:hover              // when mouse hovers
+:active             // when element is clicked
+:focus              // when element is focused
+:visited            // visited links
+:link               // unvisited links
+:checked            // checked checkbox or radio
+:disabled           // disabled input
+:enabled            // enabled input
+:required           // input with required attribute
+:optional           // input without required
+:valid              // input with valid value
+:invalid            // input with invalid value
+:first-child        // first child of parent
+:last-child         // last child of parent
+:nth-child(n)       // nth child of parent
+:nth-last-child(n)  // nth from end
+:first-of-type      // first of type among siblings
+:last-of-type       // last of type among siblings
+:nth-of-type(n)     // nth of type among siblings
+:empty              // no child elements or text
+:not(selector)      // exclude a selector
+:root               // selects the <html> element
+:focus-visible      // only when focus is visible
+:focus-within       // if element or its children focused
+:is(selector, ...)  // matches any selector in list
+:where(selector)    // like :is() but no specificity
+
+
+🎨 PSEUDO-ELEMENTS (::)
+::before                 // insert content before element
+::after                  // insert content after element
+::first-letter           // style first letter of text
+::first-line             // style first line of text
+::selection              // style selected text
+::placeholder            // style input placeholder text
+::marker                 // style list bullet or number
+::backdrop               // style backdrop of modals
+::cue                    // style captions/subtitles in media
+::file-selector-button   // style file input button
+
