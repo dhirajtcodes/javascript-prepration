@@ -63,3 +63,26 @@ const getCountArr = (arr) => {
 console.log(getCountArr(countArr));
 
 /** ================== Remove Duplicates from an Array ============ */
+
+/** Find consecutive 1s at end of array */
+
+const arr = [1, 1, 0, 1, 1, 1];
+// output: 3  ======== [1,1,1]
+
+const consecutiveFun = (valueArr) => {
+  let count = 0;
+  let maxCount = 0;
+
+  for (let i = 0; i < valueArr.length; i++) {
+    if (valueArr[i] === 1) {
+      count += 1;
+      maxCount = Math.max(maxCount, count);
+    } else {
+      count = 0; // reset if 0 is found
+    }
+  }
+
+  return maxCount;
+};
+
+console.log(consecutiveFun(arr)); // Output: 3

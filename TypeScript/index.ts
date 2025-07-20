@@ -122,8 +122,13 @@ type UserWithoutAge = Omit<User, "age">; // { name: string }
 type User = { id: number; name: string };
 type UserKeys = keyof User; // "id" | "name"
 
-const user = { id: 1, name: "Tom" };
-type UserType = typeof user; // same as type User
+const persons = {
+  name: "John",
+  age: 30,
+};
+
+type PersonType = typeof persons;
+// PersonType = { name: string; age: number }
 
 // 🔸 10. Conditional Types
 type IsString<T> = T extends string ? "Yes" : "No";

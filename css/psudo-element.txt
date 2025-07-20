@@ -1,3 +1,7 @@
+Top 50 Questions
+http://linkedin.com/pulse/top-50-css-interview-questions-answers-chandan-kumar-v0bmc/
+
+
 ✅ PSEUDO-CLASSES (:)
 
 :hover              // when mouse hovers

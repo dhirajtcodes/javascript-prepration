@@ -1,0 +1,64 @@
+1. Basic HTML Questions
+
+1. What is HTML, and what does it stand for?
+2. What are the key features of HTML5?
+3. What is the difference between HTML and XHTML?
+4. What is a DOCTYPE declaration in HTML?
+5. What are the basic building blocks of an HTML document?
+6. What is the purpose of the <head> tag in HTML?
+7. What is the difference between <div> and <span>?
+8. What are semantic elements in HTML5? Provide examples.
+9. What is the purpose of the <​meta> tag?
+10. How do you comment in HTML?
+
+2. HTML Tags and Attributes
+
+11. What is the difference between <ol>, <ul>, and <dl>?
+12. What is the purpose of the alt attribute in the <img> tag?
+13. How do you create a hyperlink in HTML?
+14. What is the difference between <strong> and <b> tags?
+15. What is the purpose of the target attribute in the <a> tag?
+16. How do you embed a video in HTML5?
+17. What is the purpose of the placeholder attribute in the <input> tag?
+18. How do you create a table in HTML?
+19. What is the difference between <th> and <td>?
+20. What is the purpose of the colspan and rowspan attributes in tables?
+
+3. HTML Forms
+
+21. What is the purpose of the <form> tag?
+22. What are the different types of <input> elements in HTML?
+23. What is the difference between GET and POST methods in forms?
+24. How do you create a dropdown list in HTML?
+25. What is the purpose of the <label> tag?
+26. How do you group related form elements using <fieldset> and <legend>?
+27. What is the purpose of the required attribute in form elements?
+28. How do you create a checkbox or radio button in HTML?
+29. What is the purpose of the <textarea> tag?
+30. How do you create a file upload input in HTML?
+
+4. HTML5 Features
+
+31. What are the new input types introduced in HTML5?
+32. What is the purpose of the <canvas> element in HTML5?
+33. How do you use the <audio> and <video> tags in HTML5?
+34. What is the purpose of the <figure> and <figcaption> tags?
+35. What is the purpose of the <article>, <section>, and <aside> tags?
+36. What is the purpose of the <header> and <footer> tags?
+37. What is the purpose of the <nav> tag?
+38. What is the purpose of the <progress> and <meter> tags?
+39. What is the purpose of the <datalist> tag?
+40. What is the purpose of the <details> and <summary> tags?
+
+5. Advanced HTML Questions
+
+41. What is the difference between localStorage and sessionStorage in HTML5?
+42. How do you embed an iframe in HTML?
+43. What is the purpose of the defer and async attributes in the <​script> tag?
+44. How do you create a responsive image in HTML?
+45. What is the purpose of the <picture> tag?
+46. How do you use the <template> tag in HTML?
+47. What is the purpose of the <svg> tag?
+48. How do you create a custom data attribute in HTML?
+49. What is the purpose of the <time> tag?
+50. How do you optimize a website for SEO using HTML?

@@ -146,7 +146,7 @@ const getSortedTreeStructure = (arr) => {
     }
 
     obj[category][brand].products.push(item);
-    obj[category][brand].totalPrice = price;
+    obj[category][brand].totalPrice += price;
   });
 
   return obj;
@@ -155,43 +155,26 @@ const getSortedTreeStructure = (arr) => {
 console.log(getSortedTreeStructure(products));
 
 // {
-
-//     Electronics: {
-
-//         'Brand A': [
-
-//             { name: 'Laptop', category: 'Electronics', brand: 'Brand A' },
-
-//             { name: 'Tablet', category: 'Electronics', brand: 'Brand A' }
-
-//         ],
-
-//         'Brand B': [
-
-//             { name: 'Phone', category: 'Electronics', brand: 'Brand B' }
-
-//         ]
-
+//   Electronics: {
+//     "Brand A": {
+//       products: [ Laptop, Tablet, Headphones ],
+//       totalPrice: 2000 // (1200 + 600 + 200)
 //     },
-
-//     Clothing: {
-
-//         'Brand C': [
-
-//             { name: 'Shirt', category: 'Clothing', brand: 'Brand C' },
-
-//             { name: 'Pants', category: 'Clothing', brand: 'Brand C' }
-
-//         ],
-
-//         'Brand D': [
-
-//             { name: 'Shoes', category: 'Clothing', brand: 'Brand D' }
-
-//         ]
-
+//     "Brand B": {
+//       products: [ Phone ],
+//       totalPrice: 800
 //     }
-
+//   },
+//   Clothing: {
+//     "Brand C": {
+//       products: [ Shirt, Pants ],
+//       totalPrice: 120
+//     },
+//     "Brand D": {
+//       products: [ Shoes ],
+//       totalPrice: 100
+//     }
+//   }
 // }
 
 /** ===========================  Question 4 ===================================== */
