@@ -1,0 +1,272 @@
+
+Learn in deep JWT Token
+1. CSRF ahow to prevent and what is CSRF
+2. Access Toke and refresh token
+3. JWT algorithum
+4. How algoritum work
+5. Whats include in jwt token
+
+- Usememo vs ref memo
+- iframe security
+- Memory Leakage
+
+
+- PostGQl vs MongoDB
+- Aggregation MongoDB
+- How Agggation work
+
+System Design
+=========================
+Create a Book Library 
+---------------------------------------------------------------------------------------------------------------------------
+1. CSRF 
+=============================================
+🔐 JWT (JSON Web Token)
+1. What is CSRF (Cross-Site Request Forgery)?
+CSRF is an attack that tricks a user into submitting a request unknowingly on a site where they are authenticated.
+
+Example Attack:
+- You’re logged in to your bank in one tab.
+- You visit a malicious website in another tab that submits a form like:
+
+<form action="https://yourbank.com/transfer" method="POST">
+  <input type="hidden" name="amount" value="10000">
+  <input type="hidden" name="to" value="attacker_account">
+  <input type="submit">
+</form>
+
+
+🛡️ How to prevent CSRF:
+- SameSite cookies (SameSite=Strict or Lax)
+- CSRF Tokens: A random token is added in forms and verified on the server.
+- Double Submit Cookies: Send a CSRF token in both a cookie and a header; compare both.
+- Use JWT in headers instead of cookies for APIs.
+
+| Protection      | Works For         | Explanation                                     |
+| --------------- | ----------------- | ----------------------------------------------- |
+| CSRF Token      | Form-based apps   | Unique token per form, validated on server      |
+| SameSite Cookie | Cookie-based apps | Prevents cookies from being sent cross-site     |
+| JWT in Headers  | SPA/API           | Token is sent manually in header, not auto-sent |
+
+
+2. Access Token and Refresh token 
+=============================================
+| Access Token                       | Refresh Token                                      |
+| ---------------------------------- | -------------------------------------------------- |
+| Short-lived (5-15 mins)            | Long-lived (days/weeks)                            |
+| Used to access protected resources | Used to get a new access token                     |
+| Sent in Authorization header       | Usually stored securely, sent only when refreshing |
+| Stored in memory or localStorage   | Stored in httpOnly cookies or secure storage       |
+
+Flow:
+
+- User logs in → gets accessToken + refreshToken.
+- Access token is used for API calls.
+- When expired, use refresh token to get a new access token.
+
+[Frontend]                          [Backend]
+   |                                      |
+   |-- Login ---------------------------> |
+   |<-- Set-Cookie(refreshToken) -------- |
+   |<-- accessToken (in JSON) ----------- |
+   |
+   |-- GET /user (with accessToken) --->  |
+   |<-- 401 (expired access token) ------ |
+   |
+   |-- POST /refresh-token -------------> | (refreshToken auto sent via cookie)
+   |<-- accessToken (new) --------------- |
+   |
+   |-- Retry GET /user -----------------> |
+   |<-- 200 OK -------------------------- |
+
+res.cookie('refreshToken', refreshToken, {
+  httpOnly: true,
+  secure: true,
+  sameSite: 'Strict',
+});
+res.json({ accessToken });
+
+3. JWT Algorithm (HS256, RS256, etc.)
+=============================================
+JWT = Header + Payload + Signature
+
+// Header
+{
+  "alg": "HS256",
+  "typ": "JWT"
+}
+
+// Payload
+{
+  "sub": "user_id",
+  "role": "admin",
+  "exp": 1683400000
+}
+
+// Signature
+HMACSHA256(
+  base64UrlEncode(header) + "." + base64UrlEncode(payload),
+  secret
+)
+
+
+🧠 4. How the algorithm works:
+
+HS256 (HMAC + SHA-256):
+- Uses a shared secret between server and client.
+- Signature is verified by hashing header + payload with secret.
+
+RS256 (RSA + SHA-256):
+- Asymmetric: public/private key.
+- Private key signs, public key verifies.
+- Useful when multiple services need to validate JWTs without knowing the secret.
+
+
+3. What’s included in JWT Token (Payload)?
+=============================================
+- iss: issuer
+- sub: subject (user ID)
+- iat: issued at time
+- exp: expiration
+- role, email, custom_data: Any user-specific data
+
+{
+  "sub": "123456",
+  "email": "user@example.com",
+  "role": "admin",
+  "exp": 1698800000
+}
+
+
+3. useMemo vs useRef vs memo
+=============================================
+
+✅ useMemo:
+- Caches return value of a function.
+- Used to avoid expensive recalculations.
+
+const expensiveResult = useMemo(() => calculateHeavy(), [dependency]);
+
+✅ useRef:
+- Stores a mutable value that persists across renders.
+- Does NOT cause re-render on update.
+
+const inputRef = useRef(null);
+
+✅ memo:
+HOC to avoid re-rendering a component unless props change.
+
+export default memo(MyComponent);
+
+4. iframe security
+=============================================
+Risks:
+
+- Clickjacking
+- Malicious content injection
+- XSS (Cross-Site Scripting)
+
+# note: XSS stands for Cross-Site Scripting, a type of security vulnerability that allows attackers to inject malicious JavaScript code into websites viewed by other users.
+
+Security Measures:
+
+- sandbox attribute: restrict actions inside iframe
+- Content-Security-Policy: limit what iframe can load
+- Use X-Frame-Options: DENY header to prevent your site from being embedded elsewhere
+
+5. Memory Leakage
+=============================================
+Causes:
+
+- Unremoved event listeners
+- Unused references in closures
+- Timers (setInterval, setTimeout) not cleared
+- DOM elements not garbage collected
+- Do not store last dataset
+
+# Nodejs
+- Use Map/Set Carefully ( If you use Map, Set, or WeakMap to cache or store data, never forget to delete keys that are no longer )
+- Avoid Global Variables  ( global.cachedData = largeObject)
+- Watch for Unbounded Data Structures ( Never let arrays, maps, or objects grow unboundedly (e.g., in logs, caches, queues). )
+# let logs = [];
+# app.on('log', msg => logs.push(msg)); // ❌ grows infinitely
+
+# // ✅ Limit size
+# if (logs.length > 1000) logs.shift();
+- Avoid Closures Holding Large Data
+- Use Streams Properly  ( Always consume readable streams. If left idle, they can hold buffers in memory. )
+# readableStream.on('data', chunk => { ... });
+# readableStream.on('end', () => { ... });
+
+Example:
+
+# const leaks = [];
+# function createLeak() {
+#   leaks.push(new Array(1000000).fill("*"));
+# }
+
+6. 🆚 PostgreSQL vs MongoDB
+=============================================
+
+| PostgreSQL               | MongoDB                                        |
+| ------------------------ | ---------------------------------------------- |
+| Relational (SQL)         | NoSQL (Document)                               |
+| Strong ACID support      | Eventual consistency (default)                 |
+| Complex joins, schemas   | Flexible, dynamic schemas                      |
+| Best for structured data | Best for unstructured or rapidly changing data |
+
+
+| **Data Model**          | Tables with rows and columns                   | Collections with JSON-like documents (BSON)       |
+| **Schema**              | **Strict schema** – needs predefined structure | **Schema-less** – flexible, dynamic structure     |
+| **Query Language**      | SQL (Structured Query Language)                | MongoDB Query Language (MQL – JavaScript-like)    |
+| **Joins Support**       | ✅ Full support (foreign keys, joins, etc.)     | ❌ Limited joins (via `$lookup`)                   |
+| **ACID Compliance**     | ✅ Fully ACID-compliant                         | ✅ From version 4.0+, supports ACID transactions   |
+| **Indexing**            | B-tree, GIN, GiST, etc.                        | B-tree, compound, geospatial, text, etc.          |
+| **Best For**            | Complex queries, relationships, consistency    | Flexible schemas, fast development, big data      |
+| **Storage Format**      | Rows in tables                                 | BSON (binary JSON) documents in collections       |
+| **Scalability**         | Vertical (scale-up) mainly                     | Horizontal (scale-out) using sharding             |
+| **Use Case Example**    | Banking, ERP, Inventory systems                | Real-time analytics, IoT, content management      |
+| **Performance**         | Slower for unstructured or highly nested data  | Fast for large volumes of loosely structured data |
+| **Transaction Support** | ✅ Strong multi-row transactions                | ✅ Available (multi-document since MongoDB 4.0)    |
+| **Community & Support** | Large, mature community                        | Large, active, modern NoSQL community             |
+| **JSON Support**        | ✅ Supports JSON, JSONB                         | ✅ Native JSON-like (BSON) format                  |
+| **Full-Text Search**    | ✅ Built-in (`tsvector`, `tsquery`)             | ✅ Built-in text index                             |
+
+✅ Choose PostgreSQL If:
+- You need relational data with complex relationships (foreign keys, joins).
+- Your app needs strict data structure, transactions, and integrity.
+- You're working with financial, government, ERP, or e-commerce systems.
+
+✅ Choose MongoDB If:
+- You need high flexibility in data schema (e.g., dynamic forms, user-generated content).
+- You're building real-time apps, IoT, analytics, or big data platforms.
+- You want to iterate quickly without managing schemas rigidly.
+
+| Use Case                    | Preferred DB | Why?                                              |
+| --------------------------- | ------------ | ------------------------------------------------- |
+| Banking system              | PostgreSQL   | Needs strong consistency and transactions         |
+| Social media posts/comments | MongoDB      | Flexible structure for nested documents           |
+| E-commerce orders/inventory | PostgreSQL   | Structured schema with product-user relationships |
+| Analytics on user activity  | MongoDB      | High-speed ingestion of varied data               |
+
+
+6. 🆚 MongoDB Aggregation
+=============================================
+Used to perform advanced queries like:
+
+- Filtering
+- Grouping
+- Sorting
+- Projecting
+
+db.orders.aggregate([
+  { $match: { status: "delivered" } },
+  { $group: { _id: "$customerId", total: { $sum: "$amount" } } },
+  { $sort: { total: -1 } }
+])
+
+
+🧠 How Aggregation Works
+- Similar to SQL pipeline
+- Data flows through multiple stages ($match, $group, $project)
+- Each stage transforms the data

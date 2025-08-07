@@ -1,0 +1,41 @@
+
+Node.js handles memory management using the V8 JavaScript engine, which is also used in Chrome. Memory management in Node.js primarily revolves around 
+automatic garbage collection, which helps allocate and reclaim memory during program execution.
+Here’s a breakdown of how memory management works in Node.js:
+
+🧠 1. Memory Allocation
+Node.js allocates memory in two main regions:
+
+- Stack memory: Used for storing primitive values and function calls. It’s small and fast.
+- Heap memory: Used for storing objects, closures, and complex data structures. It’s larger and managed by the garbage collector.
+-------------------------------------------------------------------------------- 
+
+🧹 2. Garbage Collection 
+
+- Node.js uses V8’s Mark-and-Sweep garbage collection algorithm:
+- It marks objects that are still in use (i.e., reachable from the root).
+- Unreachable (unused) objects are swept (deleted) to free memory.
+- This happens automatically in the background.
+
+V8 also includes:
+- Generational GC: Separates memory into Young and Old generations to optimize performance.
+- Incremental and Concurrent GC: Helps avoid blocking the main thread. 
+----------------------------------------------------
+📏 3. Memory Limits
+Node.js has default memory limits:
+
+- Around 2 GB for 64-bit systems
+- Around 1 GB for 32-bit systems
+
+
+🛠️ 4. Manual Optimization Tips
+- Avoid global variables that never get cleared
+- Use streams for large data instead of buffering all at once
+- Use memory profiling tools like Chrome DevTools, heapdump, or memwatch-next
+
+| Component         | Role                                       |
+| ----------------- | ------------------------------------------ |
+| V8 Engine         | Allocates heap & stack memory              |
+| Garbage Collector | Frees unused memory                        |
+| Limits            | Default \~2GB heap, configurable           |
+| Tools             | DevTools, heapdump, memwatch for profiling |

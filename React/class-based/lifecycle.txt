@@ -1,0 +1,19 @@
+MOUNTING:
+  constructor()
+  getDerivedStateFromProps()
+  render()
+  componentDidMount()
+
+UPDATING:
+  getDerivedStateFromProps()
+  shouldComponentUpdate()
+  render()
+  getSnapshotBeforeUpdate()
+  componentDidUpdate()
+
+UNMOUNTING:
+  componentWillUnmount()
+
+ERROR HANDLING:
+  getDerivedStateFromError()
+  componentDidCatch()

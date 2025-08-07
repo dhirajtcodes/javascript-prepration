@@ -6,11 +6,10 @@ interface IModule {
 }
 
 interface IUpdateModule extends IModule {
-  collage: "Shri Guru gobins";
+  collage: "Shri Guru gobind";
 }
 
 /** With Type */
-
 type IModules = {
   name: "Dhiraj";
   age: 50;

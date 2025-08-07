@@ -1,0 +1,56 @@
+🔷 1. What Are Design Patterns? (Deep Explanation)
+Design patterns are like blueprints for solving recurring design problems in software architecture. They are time-tested solutions that help developers avoid reinventing the wheel and instead build software that is:
+
+- Maintainable
+
+- Scalable
+
+- Flexible
+
+- Easier to communicate among team members
+
+They are not code snippets but general solutions that can be applied to many programming scenarios.
+---------------------------------------------------------------------------------------------------------
+
+🔷 2. Three Main Categories of Design Patterns
+✅ A. Creational Patterns — How objects are created
+These patterns abstract the instantiation process. They make the system independent of how objects are created, composed, and represented.
+
+| Pattern              | Purpose                                                                 | Real-world Analogy                       |
+| -------------------- | ----------------------------------------------------------------------- | ---------------------------------------- |
+| **Singleton**        | Ensures only one instance of a class is created.                        | President of a country (only one exists) |
+| **Factory**          | Defines an interface for creating objects, but lets subclasses decide.  | Car factory that makes different models  |
+| **Abstract Factory** | Provides an interface for creating families of related objects.         | Furniture factory for different themes   |
+| **Builder**          | Separates the construction of a complex object from its representation. | Building a custom sandwich               |
+| **Prototype**        | Creates new objects by cloning existing ones.                           | Copying a document                       |
+
+
+✅ B. Structural Patterns — How objects are composed
+These patterns help ensure that components can be composed into larger structures while keeping them flexible and efficient.
+
+
+| Pattern       | Purpose                                                      | Real-world Analogy                         |
+| ------------- | ------------------------------------------------------------ | ------------------------------------------ |
+| **Adapter**   | Allows incompatible interfaces to work together.             | Travel adapter plug                        |
+| **Bridge**    | Separates abstraction from implementation.                   | Remote control (abstraction) & TV (device) |
+| **Composite** | Treat individual objects and compositions uniformly.         | Folder contains files or other folders     |
+| **Decorator** | Adds behavior to objects dynamically.                        | Wrapping gifts or adding toppings on pizza |
+| **Facade**    | Provides a simplified interface to a complex subsystem.      | Hotel receptionist                         |
+| **Flyweight** | Reduces memory usage by sharing objects.                     | Fonts in a document                        |
+| **Proxy**     | Provides a placeholder for another object to control access. | Credit card instead of handling cash       |
+
+
+✅ C. Behavioral Patterns — How objects interact and behave
+These patterns are concerned with communication between objects, and how responsibilities are distributed.
+
+| Pattern                     | Purpose                                                          | Real-world Analogy             |
+| --------------------------- | ---------------------------------------------------------------- | ------------------------------ |
+| **Observer**                | Notifies all observers when the subject changes.                 | YouTube channel notifications  |
+| **Strategy**                | Enables selecting algorithm at runtime.                          | Payment methods at checkout    |
+| **Command**                 | Encapsulates a request as an object.                             | Remote control buttons         |
+| **Mediator**                | Defines an object to control interactions between others.        | Air traffic controller         |
+| **State**                   | Allows an object to alter its behavior when its state changes.   | Traffic signal light           |
+| **Chain of Responsibility** | Passes a request along a chain of handlers.                      | Tech support call routing      |
+| **Iterator**                | Provides a way to access elements of a collection sequentially.  | TV remote channel up/down      |
+| **Template Method**         | Defines the skeleton of an algorithm in a method.                | Cooking recipe                 |
+| **Visitor**                 | Separates an algorithm from the object structure it operates on. | Tax auditor visiting companies |

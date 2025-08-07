@@ -29,3 +29,11 @@ const firstNonRepeating = (str) => {
 };
 
 console.log(firstNonRepeating("rsrrhul"));
+
+const noRepetative = () => {
+  for (const key of str) {
+    if (str.indexOf(key) === str.lastIndexOf(key)) {
+      return key;
+    }
+  }
+};

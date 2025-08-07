@@ -61,7 +61,7 @@ plugins: [new BundleAnalyzerPlugin()];
 
 // Lazy-load images (loading="lazy")
 
-// 7. Reduce Polyfills and Transpilation=======================================================
+// 7. Reduce Polyfills and Transpilation =======================================================
 // What: Don’t add unnecessary polyfills or transpile for old browsers if not needed
 
 // Tools: @babel/preset-env, browserslist
@@ -74,7 +74,7 @@ plugins: [new BundleAnalyzerPlugin()];
 //   "not IE 11"
 // ]
 
-// 8. Environment-based Configurations======================================================
+// 8. Environment-based Configurations ======================================================
 // Why: Avoid shipping dev-only tools or logs
 
 // Tools: Webpack DefinePlugin, Vite env vars
