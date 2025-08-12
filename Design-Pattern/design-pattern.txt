@@ -2,11 +2,8 @@
 Design patterns are like blueprints for solving recurring design problems in software architecture. They are time-tested solutions that help developers avoid reinventing the wheel and instead build software that is:
 
 - Maintainable
-
 - Scalable
-
 - Flexible
-
 - Easier to communicate among team members
 
 They are not code snippets but general solutions that can be applied to many programming scenarios.
